@@ -7,3 +7,8 @@ export const fetchPopularMovies = async () => {
   const { data } = await axios(`trending/movie/day?api_key=${KEY}`);
   return data;
 };
+
+export const fetchMoviesByQueryStr = async query => {
+  const { data } = await axios(`search/movie?api_key=${KEY}&query=${query}`);
+  return data;
+};

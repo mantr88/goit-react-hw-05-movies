@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { fetchPopularMovies } from 'services/api';
 import { CircleLoader } from 'react-spinners';
+import PopularMoviesList from 'components/PopularMoviesList/PopularMoviesList';
 
 const Home = () => {
   const [popularMovies, setPopularMovies] = useState([]);
@@ -25,11 +26,7 @@ const Home = () => {
     <main>
       <h1>Popular movies</h1>
       {isLoading && <CircleLoader color="#d66b36" />}
-      <ul>
-        {popularMovies.map(movie => (
-          <li key={movie.id}>{movie.title}</li>
-        ))}
-      </ul>
+      <PopularMoviesList movies={popularMovies} />
     </main>
   );
 };

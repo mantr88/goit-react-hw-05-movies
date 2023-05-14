@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
 import { fetchMovieById } from 'services/api';
 import { CircleLoader } from 'react-spinners';
+import { MovieInfo } from 'components/MovieInfo/MovieInfo';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -32,8 +33,8 @@ const MovieDetails = () => {
     <main>
       {isLoading && <CircleLoader color="#d66b36" />}
       <Link to={backRef}>👈Back to movies list👈</Link>
-      <h1>{movie.title}</h1>
-      <img src={movie.poster_path} alt={movie.title} />
+      <MovieInfo movie={movie} />
+      <h4>Additional information</h4>
       <Link to="cast">Cast</Link>
       <Link to="reviews">Reviews</Link>
       <Outlet />

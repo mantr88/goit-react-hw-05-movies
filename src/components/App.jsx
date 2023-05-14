@@ -1,6 +1,6 @@
 import { Suspense, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { SharedLayout } from './SharedLayout';
+import SharedLayout from './SharedLayout';
 
 const Home = lazy(() => import('../Pages/Home'));
 const Movies = lazy(() => import('../Pages/Movies'));

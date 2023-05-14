@@ -10,7 +10,7 @@ const Home = () => {
       try {
         setIsLoading(true);
         const { results } = await fetchPopularMovies();
-        console.log(results);
+        // console.log(results);
         setPopularMovies(results);
       } catch (error) {
         throw new Error(`😢Sorry, it is error. Your error 👉 ${error}`);

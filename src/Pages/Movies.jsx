@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { FcSearch } from 'react-icons/fc';
 import { fetchMoviesByQueryStr } from 'services/api';
 import { CircleLoader } from 'react-spinners';
+import MoviesList from 'components/MoviesList';
 
 const Movies = () => {
   const [query, setQuery] = useState('');
@@ -15,7 +15,7 @@ const Movies = () => {
         if (query === '') return;
         setIsLoading(true);
         const { results } = await fetchMoviesByQueryStr(query);
-        console.log(results);
+        // console.log(results);
         setMovies(results);
       } catch (error) {
         throw new Error(`😢Sorry, it is error. Your error 👉 ${error}`);
@@ -40,14 +40,8 @@ const Movies = () => {
           <FcSearch />
         </button>
       </form>
-      <div>
-        {isLoading && <CircleLoader color="#d66b36" />}
-        <ul>
-          {movies.map(movie => (
-            <li key={movie.id}>{movie.title}</li>
-          ))}
-        </ul>
-      </div>
+      <div>{isLoading && <CircleLoader color="#d66b36" />}</div>
+      <MoviesList movies={movies} />
     </main>
   );
 };

@@ -9,43 +9,50 @@ const Movies = () => {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams({ query: '' });
+  const searchMovieString = searchParams.get('query');
 
   useEffect(() => {
-    const searchMovies = async () => {
-      try {
-        if (query === '') return;
-        setIsLoading(true);
-        const { results } = await fetchMoviesByQueryStr(query);
-        // console.log(results);
-        setMovies(results);
-      } catch (error) {
-        throw new Error(`😢Sorry, it is error. Your error 👉 ${error}`);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    searchMovies();
-  }, [query]);
+    const getData = setTimeout(() => {
+      const searchMovies = async () => {
+        try {
+          if (searchMovieString === '') {
+            setMovies([]);
+            return;
+          }
+          setIsLoading(true);
+          const { results } = await fetchMoviesByQueryStr(searchMovieString);
+          // console.log(results);
+          setMovies(results);
+        } catch (error) {
+          throw new Error(`😢Sorry, it is error. Your error 👉 ${error}`);
+        } finally {
+          setIsLoading(false);
+        }
+      };
+      searchMovies();
+    }, 500);
+
+    return () => clearTimeout(getData);
+  }, [searchMovieString]);
 
   const handleSubmit = e => {
     e.preventDefault();
     setQuery(e.currentTarget.elements.query.value);
-    console.log(e.currentTarget.elements.query.value);
   };
 
   return (
     <main>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="query"
-          onChange={evt => setSearchParams({ query: evt.target.value })}
-        ></input>
-        <button type="submit">
+      <FcSearch />
+      <input
+        type="text"
+        name="query"
+        onChange={evt => setSearchParams({ query: evt.target.value })}
+        value={searchMovieString}
+      ></input>
+      {/* <button type="submit">
           <FcSearch />
-        </button>
-      </form>
+        </button> */}
       <div>{isLoading && <CircleLoader color="#d66b36" />}</div>
       <MoviesList movies={movies} />
     </main>

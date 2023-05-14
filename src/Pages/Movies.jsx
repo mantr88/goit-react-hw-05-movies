@@ -6,7 +6,7 @@ import MoviesList from 'components/MoviesList';
 import { useSearchParams } from 'react-router-dom';
 
 const Movies = () => {
-  const [query, setQuery] = useState('');
+  // const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams({ query: '' });
@@ -36,10 +36,10 @@ const Movies = () => {
     return () => clearTimeout(getData);
   }, [searchMovieString]);
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    setQuery(e.currentTarget.elements.query.value);
-  };
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   setQuery(e.currentTarget.elements.query.value);
+  // };
 
   return (
     <main>

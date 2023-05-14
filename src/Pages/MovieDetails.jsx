@@ -33,6 +33,7 @@ const MovieDetails = () => {
       {isLoading && <CircleLoader color="#d66b36" />}
       <Link to={backRef}>👈Back to movies list👈</Link>
       <h1>{movie.title}</h1>
+      <img src={movie.poster_path} alt={movie.title} />
       <Link to="cast">Cast</Link>
       <Link to="reviews">Reviews</Link>
       <Outlet />

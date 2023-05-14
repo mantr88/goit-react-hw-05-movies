@@ -17,3 +17,14 @@ export const fetchMovieById = async id => {
   const { data } = await axios(`movie/${id}?api_key=${KEY}`);
   return data;
 };
+
+export const fetchCreditOfMovie = async id => {
+  const { data } = await axios(`movie/${id}/credits?api_key=${KEY}`);
+  return data;
+};
+
+export const fetchReviewsOfMovie = async id => {
+  const { data } = await axios(`
+movie/${id}/reviews?api_key=${KEY}`);
+  return data;
+};

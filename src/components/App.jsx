@@ -8,6 +8,8 @@ const MovieDetails = lazy(() => import('../Pages/MovieDetails'));
 const Cast = lazy(() => import('../components/Cast'));
 const Reviews = lazy(() => import('../components/Reviews'));
 
+//1. Після наповнення компоненту Cast перестала працювати кнопка 'Back to list';
+
 export const App = () => {
   return (
     <div>

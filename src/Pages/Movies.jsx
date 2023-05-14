@@ -3,11 +3,13 @@ import { FcSearch } from 'react-icons/fc';
 import { fetchMoviesByQueryStr } from 'services/api';
 import { CircleLoader } from 'react-spinners';
 import MoviesList from 'components/MoviesList';
+import { useSearchParams } from 'react-router-dom';
 
 const Movies = () => {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const searchMovies = async () => {
@@ -35,7 +37,11 @@ const Movies = () => {
   return (
     <main>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="query"></input>
+        <input
+          type="text"
+          name="query"
+          onChange={evt => setSearchParams({ query: evt.target.value })}
+        ></input>
         <button type="submit">
           <FcSearch />
         </button>

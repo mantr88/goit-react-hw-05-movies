@@ -8,7 +8,9 @@ const MovieDetails = lazy(() => import('../Pages/MovieDetails'));
 const Cast = lazy(() => import('../components/Cast'));
 const Reviews = lazy(() => import('../components/Reviews'));
 
-//1. Після наповнення компоненту Cast перестала працювати кнопка 'Back to list';
+//1. Після наповнення компоненту Cast та Reviews перестала працювати кнопка 'Back to list';
+// 2. Додати propTypes;
+// 3. Додати стилі;
 
 export const App = () => {
   return (

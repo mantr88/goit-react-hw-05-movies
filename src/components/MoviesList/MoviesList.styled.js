@@ -10,6 +10,7 @@ export const ListContainer = styled.ul`
 `;
 
 export const CardWrapper = styled.li`
+  padding: 5px;
   border: 1px solid black;
   border-radius: 4px;
 `;

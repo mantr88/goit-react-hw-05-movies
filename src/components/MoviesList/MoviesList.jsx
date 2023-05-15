@@ -4,7 +4,7 @@ import {
   ListContainer,
   MovieName,
   StyledLink,
-} from './PopularMoviesList.styled';
+} from './MoviesList.styled';
 
 const PopularMoviesList = ({ movies }) => {
   const location = useLocation();

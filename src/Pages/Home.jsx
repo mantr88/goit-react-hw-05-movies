@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { fetchPopularMovies } from 'services/api';
 import { CircleLoader } from 'react-spinners';
-import PopularMoviesList from 'components/PopularMoviesList/PopularMoviesList';
+import PopularMoviesList from 'components/MoviesList/MoviesList';
 
 const Home = () => {
   const [popularMovies, setPopularMovies] = useState([]);

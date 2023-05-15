@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
-import { FcSearch } from 'react-icons/fc';
 import { fetchMoviesByQueryStr } from 'services/api';
 import { CircleLoader } from 'react-spinners';
-import MoviesList from 'components/MoviesList';
 import { useSearchParams } from 'react-router-dom';
+import MoviesList from 'components/MoviesList/MoviesList';
+import SearchForm from 'components/SearchForm/SearchForm';
 
 const Movies = () => {
-  // const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams({ query: '' });
@@ -22,7 +21,6 @@ const Movies = () => {
           }
           setIsLoading(true);
           const { results } = await fetchMoviesByQueryStr(searchMovieString);
-          // console.log(results);
           setMovies(results);
         } catch (error) {
           throw new Error(`😢Sorry, it is error. Your error 👉 ${error}`);
@@ -36,23 +34,18 @@ const Movies = () => {
     return () => clearTimeout(getData);
   }, [searchMovieString]);
 
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   setQuery(e.currentTarget.elements.query.value);
-  // };
+  const handleSubmit = evt => {
+    evt.preventDefault();
+
+    const searchQueryStr = evt.target.elements.query.value;
+    const searchQueryStrTrim = searchQueryStr.trim();
+
+    setSearchParams({ query: searchQueryStrTrim });
+  };
 
   return (
     <main>
-      <FcSearch />
-      <input
-        type="text"
-        name="query"
-        onChange={evt => setSearchParams({ query: evt.target.value })}
-        value={searchMovieString}
-      ></input>
-      {/* <button type="submit">
-          <FcSearch />
-        </button> */}
+      <SearchForm onSubmit={handleSubmit} />
       <div>{isLoading && <CircleLoader color="#d66b36" />}</div>
       <MoviesList movies={movies} />
     </main>

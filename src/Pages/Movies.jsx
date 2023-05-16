@@ -12,26 +12,22 @@ const Movies = () => {
   const searchMovieString = searchParams.get('query');
 
   useEffect(() => {
-    const getData = setTimeout(() => {
-      const searchMovies = async () => {
-        try {
-          if (searchMovieString === '') {
-            setMovies([]);
-            return;
-          }
-          setIsLoading(true);
-          const { results } = await fetchMoviesByQueryStr(searchMovieString);
-          setMovies(results);
-        } catch (error) {
-          throw new Error(`😢Sorry, it is error. Your error 👉 ${error}`);
-        } finally {
-          setIsLoading(false);
+    const searchMovies = async () => {
+      try {
+        if (searchMovieString === '') {
+          setMovies([]);
+          return;
         }
-      };
-      searchMovies();
-    }, 500);
-
-    return () => clearTimeout(getData);
+        setIsLoading(true);
+        const { results } = await fetchMoviesByQueryStr(searchMovieString);
+        setMovies(results);
+      } catch (error) {
+        throw new Error(`😢Sorry, it is error. Your error 👉 ${error}`);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    searchMovies();
   }, [searchMovieString]);
 
   const handleSubmit = evt => {

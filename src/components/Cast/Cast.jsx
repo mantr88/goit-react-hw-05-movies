@@ -32,7 +32,11 @@ const Cast = () => {
         {cast.map(({ profile_path, cast_id, name, character }) => (
           <CastItem key={cast_id}>
             <img
-              src={`https://image.tmdb.org/t/p/w300${profile_path}`}
+              src={
+                profile_path
+                  ? `https://image.tmdb.org/t/p/w300${profile_path}`
+                  : 'https://www.movienewz.com/img/films/poster-holder.jpg'
+              }
               alt={name}
               width="240"
             />

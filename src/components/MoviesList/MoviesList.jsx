@@ -15,7 +15,11 @@ const MoviesList = ({ movies }) => {
         <CardWrapper key={id}>
           <StyledLink to={`/movies/${id}`} state={{ from: location }}>
             <img
-              src={`https://image.tmdb.org/t/p/w300${poster_path}`}
+              src={
+                poster_path
+                  ? `https://image.tmdb.org/t/p/w300${poster_path}`
+                  : 'https://www.movienewz.com/img/films/poster-holder.jpg'
+              }
               alt={title}
             />
             <MovieName>{title}</MovieName>

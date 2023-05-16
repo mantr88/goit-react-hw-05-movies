@@ -5,7 +5,14 @@ export const MovieInfo = ({ movie }) => {
   const { genres, title, poster_path, vote_average, overview } = movie;
   return (
     <WrapInfo>
-      <img src={`https://image.tmdb.org/t/p/w300${poster_path}`} alt={title} />
+      <img
+        src={
+          poster_path
+            ? `https://image.tmdb.org/t/p/w300${poster_path}`
+            : 'https://www.movienewz.com/img/films/poster-holder.jpg'
+        }
+        alt={title}
+      />
       <WrapText>
         <h1>{title}</h1>
         <p>User Score: {Math.trunc((vote_average * 100) / 10)}%</p>

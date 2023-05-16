@@ -8,7 +8,7 @@ export const MovieInfo = ({ movie }) => {
       <img src={`https://image.tmdb.org/t/p/w300${poster_path}`} alt={title} />
       <WrapText>
         <h1>{title}</h1>
-        <p>User Score: {vote_average}</p>
+        <p>User Score: {Math.trunc((vote_average * 100) / 10)}%</p>
         <p>Overview: {overview}</p>
         <p>
           Geners:{' '}

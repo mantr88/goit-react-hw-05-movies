@@ -1,6 +1,7 @@
 import { Outlet, NavLink } from 'react-router-dom';
 import { Container, Header, Link } from './SharedLayout.styled';
 import { GlobalStyle } from 'components/GlobalStyle';
+
 const SharedLayout = () => {
   return (
     <Container>

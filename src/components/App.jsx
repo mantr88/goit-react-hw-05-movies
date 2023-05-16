@@ -9,7 +9,7 @@ const Cast = lazy(() => import('./Cast/Cast'));
 const Reviews = lazy(() => import('./Reviews/Reviews'));
 
 // ✅ 1. Після наповнення компоненту Cast та Reviews перестала працювати кнопка 'Back to list';
-// 2. Додати propTypes;
+// ✅ 2. Додати propTypes;
 // ✅ 3. Додати стилі;
 // 4. Переробити на проценти User Score в MovieInfo;
 // 5. Прибрати консолі;

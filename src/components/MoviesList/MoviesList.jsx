@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import {
   CardWrapper,
   ListContainer,
@@ -6,7 +7,7 @@ import {
   StyledLink,
 } from './MoviesList.styled';
 
-const PopularMoviesList = ({ movies }) => {
+const MoviesList = ({ movies }) => {
   const location = useLocation();
   return (
     <ListContainer>
@@ -25,4 +26,13 @@ const PopularMoviesList = ({ movies }) => {
   );
 };
 
-export default PopularMoviesList;
+export default MoviesList;
+
+MoviesList.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      poster_path: PropTypes.string,
+      title: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
+};

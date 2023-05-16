@@ -11,12 +11,10 @@ import {
 
 const MovieDetails = () => {
   const { movieId } = useParams();
-  console.log(movieId);
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
   const location = useLocation();
-  console.log(location);
   const backRef = location.state?.from ?? '/';
 
   useEffect(() => {

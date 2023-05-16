@@ -35,7 +35,7 @@ const Cast = () => {
               src={
                 profile_path
                   ? `https://image.tmdb.org/t/p/w300${profile_path}`
-                  : 'https://www.movienewz.com/img/films/poster-holder.jpg'
+                  : 'https://previews.123rf.com/images/urfandadashov/urfandadashov1805/urfandadashov180500070/100957966-photo-not-available-icon-isolated-on-white-background-vector-illustration.jpg'
               }
               alt={name}
               width="240"
